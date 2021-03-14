@@ -1,9 +1,10 @@
-package com.bgasparotto;
+package com.bgasparotto.primeapi.controller;
 
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.WebTarget;
 
+import com.bgasparotto.primeapi.Main;
 import org.glassfish.grizzly.http.server.HttpServer;
 
 import org.junit.After;

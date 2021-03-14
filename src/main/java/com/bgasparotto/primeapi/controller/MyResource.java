@@ -1,4 +1,4 @@
-package com.bgasparotto;
+package com.bgasparotto.primeapi.controller;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
