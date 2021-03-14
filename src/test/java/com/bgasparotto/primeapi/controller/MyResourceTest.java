@@ -1,15 +1,19 @@
 package com.bgasparotto.primeapi.controller;
 
+import com.bgasparotto.primeapi.Main;
 import jakarta.ws.rs.client.Client;
 import jakarta.ws.rs.client.ClientBuilder;
 import jakarta.ws.rs.client.WebTarget;
-
-import com.bgasparotto.primeapi.Main;
+import jakarta.ws.rs.core.GenericType;
+import jakarta.ws.rs.core.MediaType;
 import org.glassfish.grizzly.http.server.HttpServer;
-
+import org.glassfish.grizzly.http.util.Header;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+
+import java.util.Map;
+
 import static org.junit.Assert.assertEquals;
 
 public class MyResourceTest {
@@ -43,7 +47,14 @@ public class MyResourceTest {
      */
     @Test
     public void testGetIt() {
-        String responseMsg = target.path("myresource").request().get(String.class);
-        assertEquals("Got it!", responseMsg);
+        Map<String, String> responseMsg = target.path("myresource").request().get(new GenericType<>() {
+        });
+        assertEquals("Got it!", responseMsg.get("value"));
+    }
+
+    @Test
+    public void shouldReturnJsonType() {
+        String contentType = target.path("myresource").request().get().getHeaderString(Header.ContentType.toString());
+        assertEquals(MediaType.APPLICATION_JSON, contentType);
     }
 }
