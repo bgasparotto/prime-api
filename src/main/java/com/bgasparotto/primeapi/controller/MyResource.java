@@ -1,9 +1,9 @@
 package com.bgasparotto.primeapi.controller;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
-import javax.ws.rs.core.MediaType;
+import jakarta.ws.rs.GET;
+import jakarta.ws.rs.Path;
+import jakarta.ws.rs.Produces;
+import jakarta.ws.rs.core.MediaType;
 
 /**
  * Root resource (exposed at "myresource" path)
@@ -12,8 +12,7 @@ import javax.ws.rs.core.MediaType;
 public class MyResource {
 
     /**
-     * Method handling HTTP GET requests. The returned object will be sent
-     * to the client as "text/plain" media type.
+     * Method handling HTTP GET requests. The returned object will be sent to the client as "text/plain" media type.
      *
      * @return String that will be returned as a text/plain response.
      */
