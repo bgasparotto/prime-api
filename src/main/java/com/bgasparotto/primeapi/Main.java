@@ -12,10 +12,9 @@ public class Main {
     public static final String BASE_URI = "http://localhost:8080/myapp/";
 
     public static HttpServer startServer() {
-
         ResourceConfig rc = new ResourceConfig()
                 .register(new PrimeApiBinder())
-                .packages("com.bgasparotto");
+                .packages(Main.class.getPackageName());
 
         return GrizzlyHttpServerFactory.createHttpServer(URI.create(BASE_URI), rc);
     }

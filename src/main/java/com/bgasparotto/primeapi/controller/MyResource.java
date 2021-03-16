@@ -9,20 +9,15 @@ import jakarta.ws.rs.core.MediaType;
 
 import java.util.Map;
 
-/**
- * Root resource (exposed at "myresource" path)
- */
 @Path("myresource")
 public class MyResource {
+    private final SampleService sampleService;
 
     @Inject
-    private SampleService sampleService;
+    public MyResource(SampleService sampleService) {
+        this.sampleService = sampleService;
+    }
 
-    /**
-     * Method handling HTTP GET requests. The returned object will be sent to the client as "text/plain" media type.
-     *
-     * @return String that will be returned as a text/plain response.
-     */
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public Map<String, String> getIt() {
