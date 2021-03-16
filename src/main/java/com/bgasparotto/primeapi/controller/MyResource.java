@@ -1,5 +1,7 @@
 package com.bgasparotto.primeapi.controller;
 
+import com.bgasparotto.primeapi.service.SampleService;
+import jakarta.inject.Inject;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.Produces;
@@ -13,6 +15,9 @@ import java.util.Map;
 @Path("myresource")
 public class MyResource {
 
+    @Inject
+    private SampleService sampleService;
+
     /**
      * Method handling HTTP GET requests. The returned object will be sent to the client as "text/plain" media type.
      *
@@ -21,6 +26,6 @@ public class MyResource {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public Map<String, String> getIt() {
-        return Map.of("value", "Got it!");
+        return Map.of("value", sampleService.print());
     }
 }
