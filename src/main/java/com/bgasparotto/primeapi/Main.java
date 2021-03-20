@@ -1,6 +1,6 @@
 package com.bgasparotto.primeapi;
 
-import com.bgasparotto.primeapi.config.PrimeApiBinder;
+import com.bgasparotto.primeapi.config.GuiceBridgeFeature;
 import org.glassfish.grizzly.http.server.HttpServer;
 import org.glassfish.jersey.grizzly2.httpserver.GrizzlyHttpServerFactory;
 import org.glassfish.jersey.server.ResourceConfig;
@@ -13,8 +13,8 @@ public class Main {
 
     public static HttpServer startServer() {
         ResourceConfig rc = new ResourceConfig()
-                .register(new PrimeApiBinder())
-                .packages(Main.class.getPackageName());
+                .packages(Main.class.getPackageName())
+                .register(GuiceBridgeFeature.class);
 
         return GrizzlyHttpServerFactory.createHttpServer(URI.create(BASE_URI), rc);
     }
